@@ -2,7 +2,7 @@ from flask import Flask
 from flask_restx import Api
 
 from config import Config
-from dao.model import movies_model, directors_model, genres_model
+# from dao.model import movies_model, directors_model, genres_model
 from setup_db import db
 from views.movies_views import movies_ns
 from views.directors_views import directors_ns
@@ -23,14 +23,6 @@ def configurate_app(application: Flask):
     api.add_namespace(movies_ns)
     api.add_namespace(directors_ns)
     api.add_namespace(genres_ns)
-    create_data(app, db)
-
-
-def create_data(app, db):
-    with app.app_context():
-        db.create_all()
-        with db.session.begin():
-            db.session.add_all()
 
 
 if __name__ == '__main__':

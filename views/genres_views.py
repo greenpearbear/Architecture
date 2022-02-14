@@ -1,14 +1,9 @@
 from flask_restx import Resource, Namespace
 from flask import request
-from marshmallow import Schema, fields
 from setup_db import db
+from dao.model.genres_model import GenreSchema
 
 genres_ns = Namespace('genres')
-
-
-class GenreSchema(Schema):
-    id = fields.Int()
-    name = fields.Str()
 
 
 @genres_ns.route('/')

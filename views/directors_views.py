@@ -1,14 +1,9 @@
 from flask_restx import Resource, Namespace
 from flask import request
-from marshmallow import Schema, fields
 from setup_db import db
+from dao.model.directors_model import DirectorSchema
 
 directors_ns = Namespace('directors')
-
-
-class DirectorSchema(Schema):
-    id = fields.Int()
-    name = fields.Str()
 
 
 @directors_ns.route('/')

@@ -1,20 +1,10 @@
 from flask_restx import Resource, Namespace
 from flask import request
-from marshmallow import Schema, fields
 from setup_db import db
+from dao.model.movies_model import MovieSchema
+
 
 movies_ns = Namespace('movies')
-
-
-class MovieSchema(Schema):
-    id = fields.Int()
-    title = fields.Str()
-    description = fields.Str()
-    trailer = fields.Str()
-    year = fields.Int()
-    rating = fields.Float()
-    genre_id = fields.Int()
-    director_id = fields.Int()
 
 
 @movies_ns.route('/')
