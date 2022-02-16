@@ -1,6 +1,6 @@
 from flask_restx import Resource, Namespace
 from flask import request
-from dao.model.movies_model import Movie, MovieSchema
+from dao.model.movie_model import MovieSchema
 
 
 movies_ns = Namespace('movies')
@@ -37,7 +37,7 @@ class MovieView(Resource):
 
     def delete(self, uid: int):
         try:
-            movie = movie_dao.delete(uid)
-            return MovieSchema().dump(movie), 204
+            movie_dao.delete(uid)
+            return "", 204
         except Exception as e:
             return str(e), 404

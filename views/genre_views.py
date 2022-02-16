@@ -1,5 +1,5 @@
 from flask_restx import Resource, Namespace
-from dao.model.genres_model import GenreSchema
+from dao.model.genre_model import GenreSchema
 
 genres_ns = Namespace('genres')
 
@@ -15,7 +15,7 @@ class GenresView(Resource):
 class GenreView(Resource):
     def get(self, uid: int):
         try:
-            genre = genre_dao.get_one()
+            genre = genre_dao.get_one(uid)
             return GenreSchema().dump(genre), 200
         except Exception as e:
             return str(e), 404
