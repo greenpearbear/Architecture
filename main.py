@@ -2,7 +2,6 @@ from flask import Flask
 from flask_restx import Api
 
 from config import Config
-# from dao.model import movies_model, directors_model, genres_model
 from setup_db import db
 from views.movies_views import movies_ns
 from views.directors_views import directors_ns
@@ -13,7 +12,6 @@ def create_app(config_object: Config) -> Flask:
     application = Flask(__name__)
     application.config.from_object(config_object)
     application.app_context().push()
-
     return application
 
 

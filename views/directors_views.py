@@ -8,7 +8,7 @@ directors_ns = Namespace('directors')
 @directors_ns.route('/')
 class DirectorsView(Resource):
     def get(self):
-        all_directors = db.session.query(Director).all()
+        all_directors = director_dao.get_all()
         return DirectorSchema(many=True).dump(all_directors), 200
 
 
@@ -16,7 +16,7 @@ class DirectorsView(Resource):
 class DirectorView(Resource):
     def get(self, uid: int):
         try:
-            director = db.session.query(Director).filter(Director.id == uid).one()
+            director = director_dao.get_one(uid)
             return DirectorSchema().dump(director), 200
         except Exception as e:
             return str(e), 404
