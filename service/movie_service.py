@@ -8,6 +8,15 @@ class MovieService:
     def get_all(self):
         return self.dao.get_all()
 
+    def get_all_filter_genre(self, uid):
+        return self.dao.get_all_filter_genre(uid)
+
+    def get_all_filter_director(self, uid):
+        return self.dao.get_all_filter_director(uid)
+
+    def get_all_filter_year(self, year):
+        return self.dao.get_all_filter_year(year)
+
     def post(self, data):
         return self.dao.post(data)
 
